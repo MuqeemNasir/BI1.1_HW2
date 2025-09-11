@@ -4,12 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Hotel from './components/Hotels'
 import HotelByName from './components/HotelByName'
+import AddHotelForm from './components/AddHotelForm'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <AddHotelForm />
       <Hotel />      
       <HotelByName name="Lake View" />      
     </>
