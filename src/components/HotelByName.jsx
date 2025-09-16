@@ -1,4 +1,5 @@
 import useFetch from "../useFetch"
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const HotelByName = ({name}) => {
     const {data, loading, error} = useFetch(`/hotels/${name}`)

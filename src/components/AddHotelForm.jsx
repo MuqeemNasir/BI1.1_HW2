@@ -1,4 +1,5 @@
 import { useState } from "react";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const AddHotelForm = () => {
   const [formData, setFormData] = useState({
@@ -54,7 +55,7 @@ const AddHotelForm = () => {
     }
 
     try {
-      const response = await fetch("/hotels", {
+      const response = await fetch("${BASE_URL}/hotels", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
