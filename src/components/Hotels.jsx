@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import useFetch from "../useFetch"
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Hotel = () => {
     const [successMessage, setSuccessMessage] = useState("")
@@ -11,11 +12,11 @@ const Hotel = () => {
         if(data){
             setHotels(data)
         }
-    })
+    }, [data])
 
     const handleDelete = async(hotelId) => {
         try{
-            const response = await fetch(`/hotels/${hotelId}`, {
+            const response = await fetch(`${BASE_URL}/hotels/${hotelId}`, {
                 method: "DELETE",
             })
 
