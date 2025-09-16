@@ -55,7 +55,7 @@ const AddHotelForm = () => {
     }
 
     try {
-      const response = await fetch("${BASE_URL}/hotels", {
+      const response = await fetch(`${BASE_URL}/hotels`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const AddHotelForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to add book.");
+        throw new Error("Failed to add hotel.");
       }
       await response.json();
 
