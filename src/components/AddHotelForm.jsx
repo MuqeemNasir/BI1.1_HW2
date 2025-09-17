@@ -30,7 +30,7 @@ const AddHotelForm = () => {
 
     let newValue = value;
 
-    if (name === "rating" || name === "phoneNumber") {
+    if (name === "rating") {
       newValue = value === "" ? "" : parseInt(value, 10);
     }
 
@@ -49,6 +49,7 @@ const AddHotelForm = () => {
 
     const payload = {
         ...formData,
+        category: formData.category ? [formData.category] : [],
         reviews: formData.reviews ? formData.reviews.split(",").map(r => r.trim()) : [],
         amenities: formData.amenities ? formData.amenities.split(",").map(a => a.trim()) : [],
         photos: formData.photos ? formData.photos.split(",").map(p => p.trim()) : [],
@@ -63,10 +64,11 @@ const AddHotelForm = () => {
         body: JSON.stringify(payload),
       });
 
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || "Failed to add hotel.");
       }
-      await response.json();
+      
 
       setSuccess(true);
       setTimeout(() => {
@@ -170,7 +172,7 @@ const AddHotelForm = () => {
           <label>Phone Number: </label>
           <br />
           <input
-            type="number"
+            type="text"
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
