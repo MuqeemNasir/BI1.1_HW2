@@ -30,7 +30,7 @@ const AddHotelForm = () => {
 
     let newValue = value;
 
-    if (name === "rating") {
+    if (name === "rating" || name === "phoneNumber") {
       newValue = value === "" ? "" : parseInt(value, 10);
     }
 
@@ -64,7 +64,7 @@ const AddHotelForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to add hotel.");
+        throw new Error(data.error || "Failed to add hotel.");
       }
       await response.json();
 
