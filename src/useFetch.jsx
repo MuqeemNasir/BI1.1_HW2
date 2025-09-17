@@ -17,7 +17,7 @@ const useFetch = (endpoint, initialData) => {
         .catch(error => setError(error.message))
         .finally(() => setLoading(false))
     }, [endpoint])
-    return {data, loading, error, setData}
+    return {data, loading, error}
 }
 
 export default useFetch
