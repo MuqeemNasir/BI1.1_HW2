@@ -64,9 +64,9 @@ const AddHotelForm = () => {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      const result = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || "Failed to add hotel.");
+        throw new Error(result.error || "Failed to add hotel.");
       }
       
 
@@ -144,6 +144,8 @@ const AddHotelForm = () => {
           <input
             type="number"
             name="rating"
+            min="0"
+            max="5"
             value={formData.rating}
             onChange={handleChange}
           />
